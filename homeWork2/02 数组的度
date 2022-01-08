@@ -3,7 +3,7 @@ public:
     int findShortestSubArray(vector<int>& nums) {
         // max_num:最大的度数
         // distances:计算最小距离
-        int more,max_num,distances = 0;
+        int max_num,distances = 0;
         // map_first记录首个位置
         unordered_map<int, int> map,map_first;
         int i = 0;
