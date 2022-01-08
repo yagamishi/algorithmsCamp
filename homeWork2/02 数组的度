@@ -1,0 +1,32 @@
+class Solution {
+public:
+    int findShortestSubArray(vector<int>& nums) {
+        // more:最大度数的key，用于有多个相同度的时间
+        // max_num:最大的度数
+        // distances:计算最小距离
+        int more,max_num,distances = 0;
+        // map_first记录首个位置，map_last记录最后个问题
+        unordered_map<int, int> map,map_first,map_last;
+        int i = 0;
+        for (auto& num : nums) {
+            // 记录开始位置
+            if (map[num] == 0) {
+                map_first[num] = i;
+            }
+            map[num]++;
+            // 如果多个数的度一样大，看那个距离小
+            if (map[num] == max_num && more != 0) {
+                distances = min(distances, i - map_first[num] + 1);
+            }
+            // 取最大的度
+            if (map[num] > max_num){
+                map_last[num] = i;
+                max_num = map[num];
+                more = 1;
+                distances = map_last[num] - map_first[num] + 1;
+            }
+            i++;
+        }
+        return (distances);
+    }
+};
