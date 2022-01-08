@@ -4,8 +4,8 @@ public:
         // max_num:最大的度数
         // distances:计算最小距离
         int more,max_num,distances = 0;
-        // map_first记录首个位置，map_last记录最后个问题
-        unordered_map<int, int> map,map_first,map_last;
+        // map_first记录首个位置
+        unordered_map<int, int> map,map_first;
         int i = 0;
         for (auto& num : nums) {
             // 记录开始位置
@@ -19,12 +19,11 @@ public:
             }
             // 取最大的度
             if (map[num] > max_num){
-                map_last[num] = i;
                 max_num = map[num];
-                distances = map_last[num] - map_first[num] + 1;
+                distances = i - map_first[num] + 1;
             }
             i++;
         }
-        return (distances);
+        return distances;
     }
 };
