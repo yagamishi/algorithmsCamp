@@ -1,0 +1,13 @@
+class Solution {
+public:
+    int minimumTotal(vector<vector<int>>& triangle) {
+        int n = triangle.size();
+        vector<int> step(n + 1, 0);
+        for (int i = n - 1; i >= 0; i--) {
+            for (int j = 0; j <= i; j++) {
+                step[j] = min(step[j], step[j + 1]) + triangle[i][j];
+            }
+        }
+        return step[0];
+    }
+};
