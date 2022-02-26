@@ -11,7 +11,7 @@ public:
             int node1 = edge[0], node2 = edge[1];
             if (find(node1) != find(node2)) {
                 fa[find(node1)] = find(node2);
-            }else {
+            } else {
                 return edge;
             }
         }
@@ -19,7 +19,8 @@ public:
     }
 
     int find(int index) {
-        if (fa[index] != index) fa[index] = find(fa[index]);
+        if (fa[index] != index)
+            fa[index] = find(fa[index]);
         return fa[index];
     }
 
