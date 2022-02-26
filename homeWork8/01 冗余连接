@@ -18,12 +18,11 @@ public:
         return vector<int>{};
     }
 
+private:
+    vector<int> fa;
     int find(int index) {
         if (fa[index] != index)
             fa[index] = find(fa[index]);
         return fa[index];
     }
-
-private:
-    vector<int> fa;
 };
